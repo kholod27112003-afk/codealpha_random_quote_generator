@@ -4,7 +4,7 @@ class FavoritesState {
   final List<Quote> favorites;
   final bool loading;
 
-  FavoritesState({
+  const FavoritesState({
     this.favorites = const [],
     this.loading = false,
   });

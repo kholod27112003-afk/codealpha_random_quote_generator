@@ -2,30 +2,26 @@ class QuoteState {
   final String quote;
   final String author;
   final bool isLoading;
+  final String? error;
 
-  QuoteState({
-    required this.quote,
-    required this.author,
-    required this.isLoading,
+  const QuoteState({
+    this.quote = '',
+    this.author = '',
+    this.isLoading = false,
+    this.error,
   });
-
-  factory QuoteState.initial() {
-    return QuoteState(
-      quote: '',
-      author: '',
-      isLoading: false,
-    );
-  }
 
   QuoteState copyWith({
     String? quote,
     String? author,
     bool? isLoading,
+    String? error,
   }) {
     return QuoteState(
       quote: quote ?? this.quote,
       author: author ?? this.author,
       isLoading: isLoading ?? this.isLoading,
+      error: error,
     );
   }
 }

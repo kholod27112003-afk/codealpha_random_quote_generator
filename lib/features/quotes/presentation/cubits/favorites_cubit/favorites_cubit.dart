@@ -1,35 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/quote.dart';
-import '../../../domain/usecases/toggle_favorite.dart';
-import '../../../domain/repositories/quote_repository.dart';
-import 'favorire_state.dart';
+import 'favorite_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
-  final QuoteRepository repository;
-  final ToggleFavorite toggleFavorite;
+  FavoritesCubit() : super(const FavoritesState());
 
-  FavoritesCubit({
-    required this.repository,
-    required this.toggleFavorite,
-  }) : super(FavoritesState());
+  void toggleFavorite(Quote quote) {
+    final updated = List<Quote>.from(state.favorites);
 
-  // تحميل المفضلة
-  Future<void> loadFavorites() async {
-    emit(state.copyWith(loading: true));
+    final exists = updated.any((q) => q.id == quote.id);
 
-    final favs = await repository.getFavorites();
+    if (exists) {
+      updated.removeWhere((q) => q.id == quote.id);
+    } else {
+      updated.add(quote);
+    }
 
-    emit(state.copyWith(
-      favorites: favs,
-      loading: false,
-    ));
+    emit(state.copyWith(favorites: updated));
   }
 
-  // إضافة / حذف من المفضلة
-  Future<void> toggle(Quote quote) async {
-    await toggleFavorite(quote);
+  void removeFavorite(Quote quote) {
+    final updated = List<Quote>.from(state.favorites);
 
-    // إعادة تحميل القائمة بعد التغيير
-    await loadFavorites();
+    updated.removeWhere((q) => q.id == quote.id);
+
+    emit(state.copyWith(favorites: updated));
   }
 }
