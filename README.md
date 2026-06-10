@@ -1,16 +1,70 @@
-# codealpha_random_quote_generator
+# Random Quote Generator
 
-A new Flutter project.
+A modern Flutter application that displays inspiring random quotes with a beautiful glassmorphism UI.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+* Generate random quotes instantly
+* Save favorite quotes
+* Copy quotes to clipboard
+* Share quotes with friends
+* Beautiful Glassmorphism design
+* State management using Bloc/Cubit
+* Local storage for favorites
 
-A few resources to get you started if this is your first Flutter project:
+### Home Screen
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Home Screen](screenshots/home.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Favorites Screen
+
+![Favorites Screen](screenshots/favorites.png)
+
+## Technologies Used
+
+* Flutter
+* Dart
+* Flutter Bloc
+* SharedPreferences
+* Clean Architecture
+
+## Project Structure
+
+```text
+lib/
+├── core/
+├── features/
+│   └── quotes/
+│       ├── data/
+│       ├── domain/
+│       └── presentation/
+└── main.dart
+```
+
+## Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/kholod27112003-afk/codealpha_random_quote_generator.git
+```
+
+2. Install dependencies
+
+```bash
+flutter pub get
+```
+
+3. Run the application
+
+```bash
+flutter run
+```
+
+## Author
+
+Kholod Ali
+
+## Repository
+
+https://github.com/kholod27112003-afk/codealpha_random_quote_generator
